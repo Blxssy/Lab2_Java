@@ -8,8 +8,8 @@ public class FileSystem {
         map = new HashMap<>();
     }
 
-    public void ReadFile(){
-        try(FileInputStream fin = new FileInputStream("./texts/test.txt"))
+    public void ReadFile(String path){
+        try(FileInputStream fin = new FileInputStream(path))
         {
             int ch;
             while((ch = fin.read()) != -1){
@@ -36,10 +36,10 @@ public class FileSystem {
         }
     }
 
-    public void WriteFile(){
+    public void WriteFile(String name){
         boolean isLastEntry = false;
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(name))) {
             for (Map.Entry<Character, Integer> entry : map.entrySet()) {
                 writer.write(entry.getKey() + " : " + entry.getValue());
                 writer.newLine();
